@@ -1,5 +1,17 @@
-USE test_db;
+CREATE DATABASE IF NOT EXISTS backend_db;
+USE backend_db;
 
---TODO Crie a tabela de user;
+CREATE TABLE IF NOT EXISTS user (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  firstName VARCHAR(255) NOT NULL,
+  lastName VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL
+);
 
---TODO Crie a tabela de posts;
+CREATE TABLE IF NOT EXISTS post (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  userId INT,
+  FOREIGN KEY (userId) REFERENCES user(id)
+);
